@@ -411,3 +411,78 @@ storyBox.scrollIntoView({
 
     }
   });
+
+document
+  .getElementById("longStoryBtn")
+  .addEventListener("click", async () => {
+    const longStoryBtn = document.getElementById("longStoryBtn");
+
+    const characterA =
+      document.getElementById("characterA").innerText;
+
+    const characterB =
+      document.getElementById("characterB").innerText;
+
+    const world =
+      document.getElementById("world").innerText;
+
+    const relationship =
+      document.getElementById("relationship").innerText;
+
+    const twist =
+      document.getElementById("twist").innerText;
+
+    const shortStory =
+      document.getElementById("storyText").innerText;
+
+    longStoryBtn.disabled = true;
+    longStoryBtn.textContent = "📚 긴 이야기 만드는 중...";
+
+    try {
+      const response = await fetch("/api/long-story", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          characterA,
+          characterB,
+          world,
+          relationship,
+          twist,
+          shortStory
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.error || "긴 서사를 만들지 못했어요."
+        );
+      }
+
+      const storyText =
+        document.getElementById("storyText");
+
+      storyText.textContent = data.story;
+
+      longStoryBtn.textContent = "📖 긴 이야기 완성!";
+      longStoryBtn.disabled = true;
+
+      document
+        .getElementById("storyBox")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+    } catch (error) {
+      console.error(error);
+
+      alert("🥲 긴 이야기를 만드는 중 문제가 생겼어요.");
+
+      longStoryBtn.disabled = false;
+      longStoryBtn.textContent = "📚 더 길게 보기";
+    }
+  });
