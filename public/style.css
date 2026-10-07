@@ -1,0 +1,176 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  color: #f7f4ff;
+
+  background:
+    radial-gradient(circle at 20% 15%, rgba(164, 132, 255, 0.18), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(255, 153, 204, 0.12), transparent 30%),
+    linear-gradient(160deg, #111225, #19172f 55%, #10111f);
+
+  padding: 40px 18px;
+}
+
+main {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 10px 0 8px;
+  text-align: center;
+  font-size: 38px;
+  letter-spacing: -1px;
+}
+
+main > p {
+  text-align: center;
+  margin: 0 0 35px;
+  color: #c9c2df;
+  font-size: 15px;
+}
+
+/* 캐릭터 선택 카드 */
+
+section {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  padding: 24px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(10px);
+}
+
+section h2 {
+  margin: 0 0 18px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: #d8caff;
+}
+
+label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+
+  padding: 10px 16px;
+  margin: 4px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+label:hover {
+  background: rgba(194, 169, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+input[type="radio"] {
+  accent-color: #bca4ff;
+}
+
+/* 메인 버튼 */
+
+button {
+  width: 100%;
+  border: 0;
+  border-radius: 16px;
+
+  padding: 16px 20px;
+  margin: 10px 0 22px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #171426;
+  background: linear-gradient(135deg, #d8c8ff, #f3c6e1);
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(190, 160, 255, 0.25);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* 결과 영역 */
+
+#result {
+  margin-top: 28px;
+  border: 1px solid rgba(210, 188, 255, 0.25);
+  background: rgba(20, 18, 40, 0.72);
+}
+
+#result > h2 {
+  text-align: center;
+  font-size: 22px;
+  letter-spacing: 0;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+#result div {
+  padding: 18px;
+  margin-bottom: 12px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+}
+
+#result h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: #cbb8ff;
+}
+
+#result p {
+  line-height: 1.7;
+  color: #eeeaf7;
+}
+
+#result strong {
+  color: #d9c8ff;
+  margin-right: 7px;
+}
+
+#storyBtn {
+  margin-top: 18px;
+  margin-bottom: 0;
+  background: linear-gradient(135deg, #f0c6e1, #cbbcff);
+}
+
+/* 휴대폰 */
+
+@media (max-width: 600px) {
+  body {
+    padding: 25px 14px;
+  }
+
+  h1 {
+    font-size: 31px;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  label {
+    padding: 9px 13px;
+  }
+}
