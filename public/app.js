@@ -286,6 +286,24 @@ const moods = [
   "숨기려 할수록 티 나는 마음"
 ];
 
+const coupleMoods = [
+  "티격태격",
+  "잔잔한 신뢰",
+  "애틋함",
+  "서로에게만 유난히 약함",
+  "말보다 행동으로 쌓이는 신뢰",
+  "오래 묵은 감정",
+  "풋풋하고 어색한 설렘",
+  "익숙함 속에 스며든 애정",
+  "장난 속에 진심이 섞임",
+  "친구 같은 편안한 연애",
+  "둘만 있을 때 달라지는 분위기",
+  "서로 챙기는 것이 너무 자연스러움",
+  "질투하면서도 아닌 척함",
+  "서로에게만 보이는 의외의 모습",
+  "말하지 않아도 통하는 익숙함"
+];
+
 
 // =========================
 // 랜덤 함수
@@ -339,8 +357,10 @@ function generatePairing() {
 
   const relationship = randomItem(relationships);
   const twist = randomItem(twists);
-  const mood = randomItem(moods);
-
+const mood = relationship.includes("연인")
+  ? randomItem(coupleMoods)
+  : randomItem(moods);
+  
 document.getElementById("characterA").innerHTML =
   `<strong>${genderA} · ${jobA}</strong>
    <div class="personality-row">
@@ -372,6 +392,15 @@ document.getElementById("characterB").innerHTML =
 
   document.getElementById("result").hidden = false;
 
+// 새 조합을 뽑으면 이전 서사 초기화
+document.getElementById("storyBox").hidden = true;
+document.getElementById("storyText").textContent = "";
+
+const longStoryBtn = document.getElementById("longStoryBtn");
+longStoryBtn.hidden = true;
+longStoryBtn.disabled = false;
+longStoryBtn.textContent = "📚 더 길게 보기";
+  
   // 결과 위치로 부드럽게 이동
   document.getElementById("result").scrollIntoView({
     behavior: "smooth",
