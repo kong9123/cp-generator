@@ -326,9 +326,126 @@ document
   .addEventListener("click", generatePairing);
 
 
-// 서사 버튼은 다음 단계에서 GPT와 연결!
 document
   .getElementById("storyBtn")
-  .addEventListener("click", () => {
-    alert("✨ 맛보기 서사는 다음 단계에서 지삐삐를 연결할 예정!");
+  .addEventListener("click", async () => {
+
+    const storyBtn = document.getElementById("storyBtn");
+
+    const characterA =
+      document.getElementById("characterA").innerText;
+
+    const characterB =
+      document.getElementById("characterB").innerText;
+
+    const world =
+      document.getElementById("world").innerText;
+
+    const relationship =
+      document.getElementById("relationship").innerText;
+
+    const twist =
+      document.getElementById("twist").innerText;
+
+    storyBtn.disabled = true;
+    storyBtn.textContent = "✨ 서사 만드는 중...";
+
+    try {
+
+      const response = await fetch("/api/story", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          characterA,
+          characterB,
+          world,
+          relationship,
+          twist
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "서사를 만들지 못했어요.");
+      }
+
+      alert(data.story);
+
+    } catch (error) {
+
+      console.error(error);
+      alert("🥲 서사를 만드는 중 문제가 생겼어요.");
+
+    } finally {
+
+      storyBtn.disabled = false;
+      storyBtn.textContent = "✨ 이 조합으로 맛보기 서사 보기";
+
+    }
+  });document
+  .getElementById("storyBtn")
+  .addEventListener("click", async () => {
+
+    const storyBtn = document.getElementById("storyBtn");
+
+    const characterA =
+      document.getElementById("characterA").innerText;
+
+    const characterB =
+      document.getElementById("characterB").innerText;
+
+    const world =
+      document.getElementById("world").innerText;
+
+    const relationship =
+      document.getElementById("relationship").innerText;
+
+    const twist =
+      document.getElementById("twist").innerText;
+
+    storyBtn.disabled = true;
+    storyBtn.textContent = "✨ 서사 만드는 중...";
+
+    try {
+
+      const response = await fetch("/api/story", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          characterA,
+          characterB,
+          world,
+          relationship,
+          twist
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "서사를 만들지 못했어요.");
+      }
+
+      alert(data.story);
+
+    } catch (error) {
+
+      console.error(error);
+      alert("🥲 서사를 만드는 중 문제가 생겼어요.");
+
+    } finally {
+
+      storyBtn.disabled = false;
+      storyBtn.textContent = "✨ 이 조합으로 맛보기 서사 보기";
+
+    }
   });
