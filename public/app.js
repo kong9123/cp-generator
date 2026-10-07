@@ -326,68 +326,8 @@ document
   .addEventListener("click", generatePairing);
 
 
-document
-  .getElementById("storyBtn")
-  .addEventListener("click", async () => {
 
-    const storyBtn = document.getElementById("storyBtn");
-
-    const characterA =
-      document.getElementById("characterA").innerText;
-
-    const characterB =
-      document.getElementById("characterB").innerText;
-
-    const world =
-      document.getElementById("world").innerText;
-
-    const relationship =
-      document.getElementById("relationship").innerText;
-
-    const twist =
-      document.getElementById("twist").innerText;
-
-    storyBtn.disabled = true;
-    storyBtn.textContent = "✨ 서사 만드는 중...";
-
-    try {
-
-      const response = await fetch("/api/story", {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-          characterA,
-          characterB,
-          world,
-          relationship,
-          twist
-        })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "서사를 만들지 못했어요.");
-      }
-
-      alert(data.story);
-
-    } catch (error) {
-
-      console.error(error);
-      alert("🥲 서사를 만드는 중 문제가 생겼어요.");
-
-    } finally {
-
-      storyBtn.disabled = false;
-      storyBtn.textContent = "✨ 이 조합으로 맛보기 서사 보기";
-
-    }
-  });document
+  document
   .getElementById("storyBtn")
   .addEventListener("click", async () => {
 
