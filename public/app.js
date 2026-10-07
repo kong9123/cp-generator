@@ -435,7 +435,17 @@ document
         throw new Error(data.error || "서사를 만들지 못했어요.");
       }
 
-      alert(data.story);
+const storyBox = document.getElementById("storyBox");
+const storyText = document.getElementById("storyText");
+const longStoryBtn = document.getElementById("longStoryBtn");
+
+storyText.textContent = data.story;
+storyBox.hidden = false;
+longStoryBtn.hidden = false;
+
+storyBox.scrollIntoView({
+  behavior: "smooth",
+  block: "start"
 
     } catch (error) {
 
