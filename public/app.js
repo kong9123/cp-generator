@@ -290,15 +290,27 @@ function generatePairing() {
   const twist = randomItem(twists);
   const mood = randomItem(moods);
 
-  document.getElementById("characterA").innerHTML =
-    `<strong>${genderA} · ${jobA}</strong><br>
-     겉으로는 ${outerA}.<br>
-     하지만 속으로는 ${innerA}.`;
+document.getElementById("characterA").innerHTML =
+  `<strong>${genderA} · ${jobA}</strong>
+   <div class="personality-row">
+     <span class="personality-label">♡ OUTSIDE</span>
+     <span>${outerA}</span>
+   </div>
+   <div class="personality-row">
+     <span class="personality-label">🔒 INSIDE</span>
+     <span>${innerA}</span>
+   </div>`;
 
-  document.getElementById("characterB").innerHTML =
-    `<strong>${genderB} · ${jobB}</strong><br>
-     겉으로는 ${outerB}.<br>
-     하지만 속으로는 ${innerB}.`;
+document.getElementById("characterB").innerHTML =
+  `<strong>${genderB} · ${jobB}</strong>
+   <div class="personality-row">
+     <span class="personality-label">♡ OUTSIDE</span>
+     <span>${outerB}</span>
+   </div>
+   <div class="personality-row">
+     <span class="personality-label">🔒 INSIDE</span>
+     <span>${innerB}</span>
+   </div>`;
 
   document.getElementById("world").textContent = world;
 
