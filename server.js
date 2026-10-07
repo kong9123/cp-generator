@@ -69,15 +69,28 @@ ${twist}
 - 제목은 쓰지 않는다.
 `;
 
-    const response = await client.responses.create({
-      model: "gpt-6-luna",
-      input: prompt,
-      max_output_tokens: 700
-    });
+const response = await client.responses.create({
+  model: "gpt-6-luna",
+  input: prompt,
+  max_output_tokens: 1500
+});
 
-    res.json({
-      story: response.output_text
-    });
+const story = response.output_text?.trim();
+
+if (!story) {
+  console.error("스토리 텍스트 없음:", {
+    status: response.status,
+    incomplete_details: response.incomplete_details
+  });
+
+  return res.status(500).json({
+    error: "서사 내용이 비어 있어요. 다시 시도해 주세요."
+  });
+}
+
+res.json({
+  story
+});
 
   } catch (error) {
     console.error(error);
