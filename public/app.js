@@ -446,7 +446,7 @@ longStoryBtn.hidden = false;
 storyBox.scrollIntoView({
   behavior: "smooth",
   block: "start"
-
+});
     } catch (error) {
 
       console.error(error);
