@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CP 제조기</title>
+</head>
+
+<body>
+
+  <main>
+    <h1>🎲 CP 제조기</h1>
+    <p>두 캐릭터의 성별을 고르고 운명에 맡겨보세요.</p>
+
+    <section>
+      <h2>CHARACTER A</h2>
+
+      <label>
+        <input type="radio" name="genderA" value="male">
+        남성
+      </label>
+
+      <label>
+        <input type="radio" name="genderA" value="female">
+        여성
+      </label>
+
+      <label>
+        <input type="radio" name="genderA" value="random" checked>
+        랜덤
+      </label>
+    </section>
+
+    <section>
+      <h2>CHARACTER B</h2>
+
+      <label>
+        <input type="radio" name="genderB" value="male">
+        남성
+      </label>
+
+      <label>
+        <input type="radio" name="genderB" value="female">
+        여성
+      </label>
+
+      <label>
+        <input type="radio" name="genderB" value="random" checked>
+        랜덤
+      </label>
+    </section>
+
+    <button id="generateBtn">
+      🎲 설정 뽑기
+    </button>
+
+    <section id="result" hidden>
+      <h2>오늘의 커플링</h2>
+
+      <div>
+        <h3>CHARACTER A</h3>
+        <p id="characterA"></p>
+      </div>
+
+      <div>
+        <h3>CHARACTER B</h3>
+        <p id="characterB"></p>
+      </div>
+
+      <p><strong>세계관</strong> <span id="world"></span></p>
+      <p><strong>관계</strong> <span id="relationship"></span></p>
+      <p><strong>특이점</strong> <span id="twist"></span></p>
+
+      <button id="storyBtn">
+        ✨ 이 조합으로 맛보기 서사 보기
+      </button>
+    </section>
+  </main>
+
+</body>
+</html>
